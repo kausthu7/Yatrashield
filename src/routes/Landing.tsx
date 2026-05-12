@@ -166,7 +166,7 @@ export default function Landing() {
         </div>
 
         {/* Navigation */}
-        <nav className="fixed top-8 left-0 right-[4px] z-50 flex justify-center px-8">
+        <nav className="sticky top-5 left-0 right-[4px] z-50 flex justify-center px-8">
           <div className="w-full max-w-7xl flex items-center justify-between">
             {/* Branding - Top Left */}
             <div
@@ -198,7 +198,7 @@ export default function Landing() {
         </nav>
 
         {/* Hero Content */}
-        <div className="relative z-10 px-6 h-screen flex items-end  pb-32 pt-160">
+        <div className="relative z-10 px-6 h-screen flex items-end  pb-35 pt-150">
           <div className="w-full px-6">
             {/* Left Column: Title Block */}
             <motion.div
@@ -299,7 +299,7 @@ export default function Landing() {
               className="relative z-5 w- h-100 rounded-[5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.2)] rotate-2 hover:rotate-0 transition-all duration-1000"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.src = '/product_kit.png'; // Fallback to main kit if specific image missing
+                target.src = '/product_kit.jpeg'; // Fallback to main kit if specific image missing
               }}
             />
           </div>
