@@ -1,0 +1,60 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Order validation
+    function isValidOrder(data) {
+      return data.keys().hasAll(['stationName', 'customerName', 'platformNumber', 'coachSeat', 'productId', 'amount', 'status', 'createdAt', 'updatedAt'])
+        && data.keys().size() == 9
+        && data.stationName is string && data.stationName.size() <= 100
+        && data.customerName is string && data.customerName.size() <= 100
+        && data.platformNumber is string && data.platformNumber.size() <= 20
+        && data.coachSeat is string && data.coachSeat.size() <= 20
+        && data.productId is string && data.productId.size() <= 50
+        && data.amount is number && data.amount > 0
+        && data.status in ['pending', 'delivered']
+        && data.createdAt == request.time
+        && data.updatedAt == request.time;
+    }
+
+    match /orders/{orderId} {
+      // Allow customers to create orders anonymously
+      allow create: if isValidId(orderId) && isValidOrder(incoming());
+
+      // Allow anyone with the ID to get their order (for success page)
+      allow get: if isValidId(orderId);
+
+      // Staff verification: allow update status from pending to delivered
+      // In a real app, this should be restricted to authenticated staff
+      allow update: if isValidId(orderId)
+        && incoming().status == 'delivered'
+        && existing().status == 'pending'
+        && incoming().diff(existing()).affectedKeys().hasOnly(['status', 'updatedAt'])
+        && incoming().updatedAt == request.time;
+
+      // Restrict listing orders to prevent bulk scraping
+      allow list: if false;
+    }
+  }
+}

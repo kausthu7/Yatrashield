@@ -1,0 +1,31 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "An order placed by a traveler at a railway station.",
+      "type": "object",
+      "properties": {
+        "stationName": { "type": "string", "description": "Name of the station" },
+        "customerName": { "type": "string", "description": "Name of the customer" },
+        "platformNumber": { "type": "string", "description": "Platform number" },
+        "coachSeat": { "type": "string", "description": "Coach and seat number" },
+        "productId": { "type": "string", "description": "ID of the selected product" },
+        "amount": { "type": "number", "description": "Amount paid" },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "delivered"],
+          "description": "Delivery status"
+        },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Time of order" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "Last update time" }
+      },
+      "required": ["stationName", "customerName", "platformNumber", "coachSeat", "productId", "amount", "status", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of all customer orders"
+    }
+  }
+}

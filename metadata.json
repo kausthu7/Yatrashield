@@ -1,0 +1,6 @@
+{
+  "name": "Royal Railway Orders",
+  "description": "A premium, 'Old Money' luxury ordering system for railway travelers, featuring secure UPI payments and QR verification.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": []
+}
