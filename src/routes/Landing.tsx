@@ -20,24 +20,39 @@ export default function Landing() {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
   const [waitlistSubmitted, setWaitlistSubmitted] = React.useState(false);
 
-  const handlePreOrderSubmit = (e: React.FormEvent) => {
+  const SPREADSHEET_URL = "https://script.google.com/macros/s/AKfycbxWnUXTdvVPwesOJortlonqpmEQ7Zw-wRkl_Nn7oIqf2keTS3Lahd2pMSncl79asrEO/exec";
+
+  const handlePreOrderSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!preOrderForm.name || !preOrderForm.contact || !preOrderForm.place) {
       alert("Please fill all fields. Email or Number is mandatory.");
       return;
     }
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      await fetch(SPREADSHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors', // Apps Script requires no-cors for simple POST
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...preOrderForm,
+          type: 'Pre-order'
+        })
+      });
+
       setIsSubmitting(false);
       setIsSubmitted(true);
-      // Reset form after a delay or just close modal
       setTimeout(() => {
         setIsOrderModalOpen(false);
         setIsSubmitted(false);
         setPreOrderForm({ name: '', contact: '', place: '' });
       }, 3000);
-    }, 1500);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("Something went wrong. Please try again.");
+      setIsSubmitting(false);
+    }
   };
   const productItems = [
     { name: "Medical-grade face mask", image: "/mask.png" },
@@ -561,9 +576,25 @@ export default function Landing() {
             </div>
           ) : (
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                setWaitlistSubmitted(true);
+                const emailInput = e.currentTarget.querySelector('input') as HTMLInputElement;
+                const email = emailInput.value;
+
+                try {
+                  setWaitlistSubmitted(true); // Show success immediately for better UX
+                  await fetch(SPREADSHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      email: email,
+                      type: 'Waitlist'
+                    })
+                  });
+                } catch (error) {
+                  console.error("Waitlist error:", error);
+                }
               }}
               className="flex flex-col md:flex-row gap-3 md:gap-4 max-w-lg mx-auto"
             >
