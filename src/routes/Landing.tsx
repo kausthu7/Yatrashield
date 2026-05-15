@@ -326,32 +326,6 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 md:py-30 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 md:mb-24">
-            <p className="text-sm md:text-lg font-black uppercase tracking-[0.3em] text-emerald-deep mb-4">Why Yatra Shield</p>
-            <h2 className="text-2xl sm:text-4xl md:text-7xl font-black uppercase tracking-[0.1em] mb-6 md:mb-10 leading-tight">Engineered for <br className="hidden md:block" /> Your Safety</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {features.map((feature, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ y: -10 }}
-                className="clay-card p-8 md:p-12 transition-all group"
-              >
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-natural-bg text-emerald-deep rounded-2xl md:rounded-[2rem] flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-all duration-500 clay-button">
-                  {React.cloneElement(feature.icon as React.ReactElement, { size: 28 })}
-                </div>
-                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4">{feature.title}</h3>
-                <p className="text-deep-olive/60 leading-relaxed font-medium text-sm md:text-base">{feature.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Product Showcase */}
       <section className="bg-[#a3eeff] gradient-to-br from-[#0085ff ] to-[#00457a] py-20 md:py-32 px-6 overflow-hidden relative">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-[1200px] h-[300px] md:h-[600px] bg-[#ffffff] blur-[100px] md:blur-[150px] rounded-full" />
@@ -401,6 +375,32 @@ export default function Landing() {
             >
               Pre-order This Kit Now
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section id="features" className="py-20 md:py-30 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 md:mb-24">
+            <p className="text-sm md:text-lg font-black uppercase tracking-[0.3em] text-emerald-deep mb-4">Why Yatra Shield</p>
+            <h2 className="text-2xl sm:text-4xl md:text-7xl font-black uppercase tracking-[0.1em] mb-6 md:mb-10 leading-tight">Engineered for <br className="hidden md:block" /> Your Safety</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {features.map((feature, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ y: -10 }}
+                className="clay-card p-8 md:p-12 transition-all group"
+              >
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-natural-bg text-emerald-deep rounded-2xl md:rounded-[2rem] flex items-center justify-center mb-8 md:mb-10 group-hover:scale-110 transition-all duration-500 clay-button">
+                  {React.cloneElement(feature.icon as React.ReactElement, { size: 28 })}
+                </div>
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-4">{feature.title}</h3>
+                <p className="text-deep-olive/60 leading-relaxed font-medium text-sm md:text-base">{feature.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
