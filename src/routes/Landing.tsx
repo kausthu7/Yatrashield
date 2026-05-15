@@ -157,12 +157,19 @@ export default function Landing() {
       <div className="relative min-h-screen w-full">
         {/* Background Image */}
         <div className="absolute inset-0">
+          {/* Mobile Background */}
+          <img
+            src="/hero_mobile.jpeg"
+            alt="Yatra Shield Hero Mobile"
+            className="w-250 h-250 object-cover block md:hidden"
+          />
+          {/* Desktop Background */}
           <img
             src="/hero_new.jpeg"
-            alt="Yatra Shield Travelers"
-            className="w-full h-full object-cover"
+            alt="Yatra Shield Hero Desktop"
+            className="w-full h-full object-cover hidden md:block"
           />
-          <div className="absolute inset-0 bg-black/5" />
+          <div className="absolute inset-0 bg-black/10" />
         </div>
 
         {/* Navigation */}
@@ -226,7 +233,7 @@ export default function Landing() {
         </nav>
 
         {/* Hero Content */}
-        <div className="relative z-10 px-6 min-h-screen flex flex-col md:flex-row md:items-end pb-12 md:pb-35 pt-5 md:pt-15">
+        <div className="relative z-10 px-10 pt-20 md:px-20 min-h-screen flex flex-col md:flex-row md:items-end pb-12 md:pb-35 pt-5 md:pt-15">
           <div className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-end justify-end gap-10 md:gap-24">
             {/* Left Column: Title Block */}
             <motion.div
@@ -235,7 +242,7 @@ export default function Landing() {
               transition={{ duration: 0.8 }}
               className="w-full md:max-w-3xl order-1 md:order-2 text-right"
             >
-              <div className="mb-6 md:mb-8">
+              <div className="mb-6 md:mb-8 h-150">
                 <h1 className="text-lg sm:text-2xl md:text-5xl font-thin !text-[#ffffff] uppercase tracking-[0.2em] md:tracking-[0.1em] leading-tight mb-2">
                   Designed For Your
                 </h1>
@@ -244,17 +251,9 @@ export default function Landing() {
                 </h2>
               </div>
 
-              {/* Mobile Hero Image (Stacked) */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 }}
-                className="md:hidden w-[500px] max-w-[500px] ml-auto mb-8 aspect-square relative"
-              >
-                <div className="absolute inset-0 bg-[#00abff]/20 blur-[60px] rounded-full" />
-              </motion.div>
 
-              <p className="text-[13px] md:text-lg text-white/80 mb-8 md:mb-12 max-w-xl ml-auto leading-relaxed font-medium">
+
+              <p className="text-[13px] md:text-lg text-white mb-8 md:mb-12 max-w-xl ml-auto leading-relaxed font-bold drop-shadow-lg">
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-end">
