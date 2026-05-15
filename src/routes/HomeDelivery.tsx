@@ -137,25 +137,25 @@ export default function HomeDelivery() {
   };
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-soft-cream overflow-hidden relative">
+    <div className="w-full max-w-md mx-auto min-h-screen bg-soft-cream overflow-hidden relative">
       <motion.header
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-emerald-deep pt-12 pb-8 px-8 text-center text-natural-bg relative"
+        className="bg-emerald-deep pt-10 md:pt-12 pb-6 md:pb-8 px-6 md:px-8 text-center text-natural-bg relative"
       >
         <button 
           onClick={() => navigate('/')}
-          className="absolute left-6 top-12 p-2 hover:bg-white/10 rounded-full transition-colors text-white"
+          className="absolute left-4 md:left-6 top-10 md:top-12 p-2 hover:bg-white/10 rounded-full transition-colors text-white"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={20} md:size={24} />
         </button>
-        <div className="flex flex-col items-center justify-center mb-6">
-          <span className="font-sans uppercase text-xl tracking-[0.15em] leading-none text-natural-bg mb-[-5px]">YATRA</span>
-          <span className="font-serif text-[3.5rem] leading-none text-natural-bg">Shield</span>
+        <div className="flex flex-col items-center justify-center mb-4 md:mb-6">
+          <span className="font-sans uppercase text-lg md:text-xl tracking-[0.15em] leading-none text-natural-bg mb-[-4px] md:mb-[-5px]">YATRA</span>
+          <span className="font-serif text-[2.5rem] md:text-[3.5rem] leading-none text-natural-bg">Shield</span>
         </div>
-        <p className="!text-xl sans-label opacity-100 mt-2 font-bold tracking-tight">Home Delivery Service</p>
-        <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full text-xs font-sans uppercase tracking-widest text-emerald-deep shadow-sm">
-          <Home size={18} />
+        <p className="text-sm md:text-xl sans-label opacity-100 mt-2 font-bold tracking-tight">Home Delivery Service</p>
+        <div className="mt-4 inline-flex items-center gap-2 px-4 py-1.5 md:py-2 bg-white rounded-full text-[10px] md:text-xs font-sans uppercase tracking-widest text-emerald-deep shadow-sm">
+          <Home size={14} md:size={18} />
           <span className="font-bold">Standard Delivery</span>
         </div>
       </motion.header>

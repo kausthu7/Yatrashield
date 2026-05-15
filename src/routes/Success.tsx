@@ -59,7 +59,7 @@ export default function Success() {
   }
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-soft-cream flex flex-col items-center py-12 px-6">
+    <div className="w-full max-w-md mx-auto min-h-screen bg-soft-cream flex flex-col items-center py-10 md:py-12 px-6">
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -69,8 +69,8 @@ export default function Success() {
         <CheckCircle2 size={64} strokeWidth={1} />
       </motion.div>
 
-      <h1 className="text-3xl text-emerald-deep font-bold mb-1 italic">Order Confirmed</h1>
-      <p className="sans-label text-luxury-gold opacity-80 mb-10">Premium Service Reserved</p>
+      <h1 className="text-2xl md:text-3xl text-emerald-deep font-bold mb-1 italic">Order Confirmed</h1>
+      <p className="text-[10px] md:text-xs sans-label text-luxury-gold opacity-80 mb-6 md:mb-10 uppercase tracking-widest">Premium Service Reserved</p>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -85,16 +85,17 @@ export default function Success() {
           <span>#{orderId?.split('-')[1]}</span>
         </div>
 
-        <div className="flex flex-col items-center p-6 bg-natural-bg clay-card" id="qr-container" ref={qrRef}>
-          <div className="p-4 bg-white clay-card mb-4 border-4 border-luxury-gold/20">
+        <div className="flex flex-col items-center p-4 md:p-6 bg-natural-bg clay-card" id="qr-container" ref={qrRef}>
+          <div className="p-3 md:p-4 bg-white clay-card mb-4 border-2 md:border-4 border-luxury-gold/20">
             <QRCodeCanvas
               value={orderId || ''}
-              size={180}
+              size={150}
               level="H"
               includeMargin={true}
+              className="w-full h-auto max-w-[150px] md:max-w-[180px]"
             />
           </div>
-          <p className="sans-label text-emerald-deep/60">Digital verification required</p>
+          <p className="text-[10px] md:text-xs sans-label text-emerald-deep/60">Digital verification required</p>
         </div>
 
         <div className="space-y-4 pt-4 border-t border-dashed border-emerald-deep/10">

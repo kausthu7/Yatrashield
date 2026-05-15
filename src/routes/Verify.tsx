@@ -127,7 +127,7 @@ export default function Verify() {
                   <h2 className="text-2xl italic mb-2 text-natural-bg">Scan Registry QR</h2>
                   <p className="text-natural-bg/40 text-sm">Align the customer's digital receipt within the frame</p>
                 </div>
-                <div id="reader" className="overflow-hidden clay-card bg-black"></div>
+                <div id="reader" className="overflow-hidden clay-card bg-black aspect-square max-w-[280px] mx-auto border-4 border-luxury-gold/20 shadow-2xl"></div>
               </motion.div>
             )}
 
@@ -148,7 +148,7 @@ export default function Verify() {
                 key="result-success"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="w-full clay-card p-8 border border-white/10"
+                className="w-full clay-card p-6 md:p-8 border border-white/10"
               >
                 <div className="flex items-center gap-4 mb-8">
                   <div className="w-14 h-14 bg-natural-bg flex items-center justify-center text-emerald-deep clay-button">
