@@ -242,7 +242,7 @@ export default function Landing() {
               transition={{ duration: 0.8 }}
               className="w-full md:max-w-3xl order-1 md:order-2 text-right"
             >
-              <div className="mb-6 md:mb-8 h-150">
+              <div className="mb-6 md:mb-8 h-130">
                 <h1 className="text-lg sm:text-2xl md:text-5xl font-thin !text-[#ffffff] uppercase tracking-[0.2em] md:tracking-[0.1em] leading-tight mb-2">
                   Designed For Your
                 </h1>
